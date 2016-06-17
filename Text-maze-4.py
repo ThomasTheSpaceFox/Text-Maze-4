@@ -160,6 +160,7 @@ def tilegriddraw():
 	
 def winscreenwait():
 	while True:
+		time.sleep(.1)
 		for event in pygame.event.get():
 			if event.type == KEYDOWN:
 				return()
