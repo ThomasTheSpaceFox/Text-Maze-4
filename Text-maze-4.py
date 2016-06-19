@@ -32,17 +32,23 @@ import pygame
 import time
 import os
 from pygame.locals import *
-
 if 'mazefilepath' in globals():
 	print ("Global variable: 'mazefilepath' detected, using as maze refrence.")
 else:
 	print ("Global variable: 'mazefilepath' not detected, using default maze.")
 	mazefilepath = (os.path.join('MAZE', 'sample.MAZE'))
+if 'MENUFLG' in globals():
+	print ("Global variable: 'MENUFLG' present. following its setting.")
+else:
+	print ("Global variable: 'MENUFLG' not present. using default.")
+	MENUFLG=0
+
 
 #load window icon, make window, set caption, start music, init things. etc.
 pygame.mixer.init()
-pygame.mixer.music.load(os.path.join('AUDIO', 'vg-mus-2_spooky-hall.ogg'))
-pygame.mixer.music.play(-1)
+if MENUFLG==0:
+	pygame.mixer.music.load(os.path.join('AUDIO', 'vg-mus-2_spooky-hall.ogg'))
+	pygame.mixer.music.play(-1)
 stepfx=pygame.mixer.Sound(os.path.join('AUDIO', 'step.ogg'))
 
 pygame.display.init()
