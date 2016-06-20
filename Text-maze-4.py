@@ -32,6 +32,7 @@ import pygame
 import time
 import os
 from pygame.locals import *
+#check for global variables
 if 'mazefilepath' in globals():
 	print ("Global variable: 'mazefilepath' detected, using as maze refrence.")
 else:
@@ -107,6 +108,7 @@ gameend = ('0')
 CANTMOVE = ("Can't move in that direction.")
 WINGAME = ("You win!")
 lastmove="F"
+#function to draw tile grid
 def tilegriddraw():
 	
 	
@@ -163,7 +165,8 @@ def tilegriddraw():
 		screensurf.blit(tilefloor, (0, 260))
 	else:
 		screensurf.blit(tilewall, (0, 260))
-	
+
+#function used to wait for a keystroke at the win screen
 def winscreenwait():
 	while True:
 		time.sleep(.1)
@@ -185,23 +188,25 @@ def lookpoint(lookptx, lookpty):
 				linexcnt += 1
 		lineycnt += 1
 	return (lookuppointis)
-	
+
+#define a simple font from the system font
 simplefont = pygame.font.SysFont(None, 16)
 
+#function that draws text at the bottom of the display
 def drawfoottext(textto, linemode):
 	text = simplefont.render(textto, True, (255, 255, 255), (0, 0, 0))
 	if linemode==0:
 		screensurf.blit(text, (0, 340))
 	if linemode==1:
 		screensurf.blit(text, (0, 353))
-
+#function that draws text at the top of the display
 def drawheadertext(textto, linemode):
 	text = simplefont.render(textto, True, (255, 255, 255), (0, 0, 0))
 	if linemode==0:
 		screensurf.blit(text, (0, 0))
 	if linemode==1:
 		screensurf.blit(text, (0, 12))
-
+#main input reading function
 def keyread():
 	while True:
 		time.sleep(.1)
@@ -337,9 +342,10 @@ while gameend==('0'):
 	#misic user commands
 	if usrentry==QUITWORDBIND:
 		gameend=('1')
-	#game win check
-	if cantmoveflg==0:
+	#plays footstep sound fx
+	if (cantmoveflg==0 and usrentry!=QUITWORDBIND):
 		stepfx.play()
+	#game win check
 	if (playx==endposx and playy==endposy):
 		#print(WINGAME)
 		wintext = simplefont.render("Press a key.", True, (255, 255, 255), (0, 0, 0))
