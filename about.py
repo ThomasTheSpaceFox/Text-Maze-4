@@ -13,6 +13,9 @@ pygame.font.init()
 
 screensurf=pygame.display.set_mode((400, 260))
 screensurf.fill((100, 120, 100))
+aboutbg=pygame.image.load(os.path.join('TILE', 'about-bg.png'))
+screensurf.blit(aboutbg, (0, 0))
+
 pygame.display.set_caption("Text-maze 4 about", "Text-maze 4 about")
 simplefont = pygame.font.SysFont(None, 16)
 abt = open('live-about.txt')

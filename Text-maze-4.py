@@ -60,6 +60,7 @@ screensurf=pygame.display.set_mode((240, 370))
 pygame.display.set_caption("Text-maze 4", "Text-maze 4")
 
 #load tiles
+gamebg=pygame.image.load(os.path.join('TILE', 'game-bg.png'))
 tilewall=pygame.image.load(os.path.join('TILE', 'wall.png'))
 tileplayer=pygame.image.load(os.path.join('TILE', 'player.png'))
 tileplayerB=pygame.image.load(os.path.join('TILE', 'playerB.png'))
@@ -290,6 +291,7 @@ while gameend==('0'):
 	#	print ("F3:" + FORWARD3 + " L3:" + LEFTWARD3 + " R3:" + RIGHTWARD3)
 	# 3 stage maze drawing function.
 	screensurf.fill((100, 120, 100))
+	screensurf.blit(gamebg, (0, 0))
 	tilegriddraw()
 	if cantmoveflg==1:
 		drawheadertext(CANTMOVE, 1)

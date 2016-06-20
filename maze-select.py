@@ -27,7 +27,7 @@ for flx in mainlist:
 
 #load titlescreen image.
 titlescreen=pygame.image.load(os.path.join('TILE', 'titlescreen.png'))
-
+titlebg=pygame.image.load(os.path.join('TILE', 'menu-bg.png'))
 
 #init the mixer and start the music
 pygame.mixer.init()
@@ -47,7 +47,9 @@ screensurf.fill((100, 120, 100))
 titlescreenbox = titlescreen.get_rect()
 titlescreenbox.centerx = screensurf.get_rect().centerx
 titlescreenbox.centery = ((screensurf.get_rect().centery) - 90)
+screensurf.blit(titlebg, (0, 0))
 screensurf.blit(titlescreen, titlescreenbox)
+
 
 
 pygame.display.set_caption("Text-maze 4 menu", "Text-maze 4")
@@ -61,6 +63,7 @@ while menusel!="quit":
 		print ("Maze execution complete, returning to menu.")
 		pygame.display.set_caption("Text-maze 4 menu", "Text-maze 4 menu")
 		screensurf.fill((100, 120, 100))
+		screensurf.blit(titlebg, (0, 0))
 		screensurf.blit(titlescreen, titlescreenbox)
 		ixreturn=0
 	menucnt=1
